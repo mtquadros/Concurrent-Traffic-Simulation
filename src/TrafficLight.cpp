@@ -62,33 +62,13 @@ void TrafficLight::simulate()
     // FP.2b : Finally, the private method „cycleThroughPhases“ should be started in a thread when the public method „simulate“ is called.
     // To do this, use the thread queue in the base class.
     threads.emplace_back(std::thread(&TrafficLight::cycleThroughPhases,this));
-    //threads.back().join();
+
 }
 
 // virtual function which is executed in a thread
 void TrafficLight::cycleThroughPhases()
 {  
-   /* while(true){
-    clock_t duration = 0;
-    clock_t _now = clock();
-    while (duration < 4)
-    {
-        duration = (clock() - _now) / CLOCKS_PER_SEC;
-        _messageQueue.send(std::move(_currentPhase));
-    }
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    _currentPhase = green;
-    duration = 0;
-    _now = clock();
-    while (duration < 5)
-    {
-        _messageQueue.send(std::move(_currentPhase));
-        duration = (clock() - _now) / CLOCKS_PER_SEC;
-    }
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    _currentPhase = red;
-    }
-    */
+
    std::random_device _rand;
    unsigned int duration = 0;
     while (true)
